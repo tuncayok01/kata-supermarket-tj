@@ -1,4 +1,4 @@
-package kata.supermarket;
+package kata.supermarket.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
