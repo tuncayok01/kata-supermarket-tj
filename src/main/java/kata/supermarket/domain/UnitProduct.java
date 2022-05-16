@@ -2,11 +2,11 @@ package kata.supermarket.domain;
 
 import java.math.BigDecimal;
 
-public class Product {
+public class UnitProduct {
 
     private final BigDecimal pricePerUnit;
 
-    public Product(final BigDecimal pricePerUnit) {
+    public UnitProduct(final BigDecimal pricePerUnit) {
         this.pricePerUnit = pricePerUnit;
     }
 
