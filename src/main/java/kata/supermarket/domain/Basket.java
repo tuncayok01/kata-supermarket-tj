@@ -1,5 +1,8 @@
 package kata.supermarket.domain;
 
+import kata.supermarket.offer.SpecialOffer;
+import kata.supermarket.service.SpecialOfferService;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -7,9 +10,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class Basket {
+    private final SpecialOfferService specialOfferService;
     private final List<Item> items;
 
-    public Basket() {
+    public Basket(SpecialOfferService specialOfferService) {
+        this.specialOfferService = specialOfferService;
         this.items = new ArrayList<>();
     }
 
@@ -39,15 +44,10 @@ public class Basket {
                     .setScale(2, RoundingMode.HALF_UP);
         }
 
-        /**
-         * TODO: This could be a good place to apply the results of
-         *  the discount calculations.
-         *  It is not likely to be the best place to do those calculations.
-         *  Think about how Basket could interact with something
-         *  which provides that functionality.
-         */
         private BigDecimal discounts() {
-            return BigDecimal.ZERO;
+            List<SpecialOffer> specialOffers = specialOfferService.getSpecialOffers(items);
+
+            return specialOfferService.getTotalDiscount(specialOffers);
         }
 
         private BigDecimal calculate() {
