@@ -1,11 +1,12 @@
 package kata.supermarket.offer;
 
+import kata.supermarket.domain.Product;
 import kata.supermarket.domain.UnitProduct;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class PercentOffForUnitProduct implements SpecialOffer {
+public class PercentOffForUnitProduct implements SpecialOfferForProduct {
 
     private final UnitProduct product;
     private final int quantity;
@@ -33,4 +34,8 @@ public class PercentOffForUnitProduct implements SpecialOffer {
                 .setScale(2, RoundingMode.HALF_UP);
     }
 
+    @Override
+    public Product product() {
+        return product;
+    }
 }
